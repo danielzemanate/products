@@ -23,8 +23,8 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item active" *ngIf="auth.isLoggedIn()">
-        <a class="nav-link" href="#" routerLink="/register">Productos</a>
+      <li class="nav-item" *ngIf="auth.isLoggedIn()">
+        <a class="nav-link"  href="/products" >Productos</a>
       </li>
       <li class="nav-item active" *ngIf="auth.isLoggedIn()">
         <a class="nav-link" href="#" routerLink="" (click)="auth.logout()">ADD PRODUCT</a>
