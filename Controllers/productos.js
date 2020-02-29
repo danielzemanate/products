@@ -60,11 +60,11 @@ module.exports = {
     
     getProductsUser: async (req, res) => {
         console.log("Request: ", req.params)
-        var id_user = req.params.id_user;
+        var id= req.params.id;
 
         producto.findAll({
             where: {
-              id_user: id_user
+              id: id
             }
           })
         .then( productos=> res.send(productos))

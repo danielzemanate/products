@@ -28,7 +28,16 @@ export class ProductsFormComponent implements OnInit {
 
   ngOnInit(): void {
    const params= this.activatedRoute.snapshot.params;
-   console.log(params)
+   if(params.id){
+     this.productosService.getProduct(params.id)
+     .subscribe(
+       res=>{
+        console.log(res)
+        //this.product =res
+       },
+       err=>console.error(err)
+     )
+   }
   }
 
   saveNewProduct(){

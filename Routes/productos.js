@@ -11,6 +11,6 @@ module.exports = (app) =>
     app.post("/updateProduct", productosController.updateProduct);
     app.get("/deleteProduct/:id", productosController.deleteProduct);
     
-    app.get("/getProductUser/:id_user", productosController.getProductsUser);
+    app.get("/getProductUser/:id", productosController.getProductsUser);
 
 }
