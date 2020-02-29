@@ -44,14 +44,14 @@ module.exports = {
     },
 
     deleteProduct: async (req, res) => {
-        var data = req.body;
+        var id = req.params.id;
 
         producto.destroy({
-            where: { id: data.id }
+            where: { id:id}
         })
             .then(producto => res.send({
                 status: 200,
-                id: data.id
+                id: id
                }))
             .catch(error => console.log(error));
     },

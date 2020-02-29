@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
+
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
@@ -12,7 +13,8 @@ import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
 import { ProductsFormComponent } from './products-form/products-form.component';
 import { ProductsListComponent } from './products-list/products-list.component';
-import {ProductosService} from './services/productos.service'
+import {ProductosService} from './services/productos.service';
+import { UpdateComponent } from './update/update.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,8 +24,25 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'update',
+    component: UpdateComponent,
+    
+  },
+
+  {
+    path: 'addProduct',
+    component: ProductsFormComponent,
+    
+  },
+  {
+    path: 'edit/:id',
+    component: ProductsFormComponent,
+    
   }
 ]
+
 
 @NgModule({
   declarations: [
@@ -33,7 +52,8 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     ProductsFormComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

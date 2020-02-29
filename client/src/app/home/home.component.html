@@ -2,13 +2,24 @@
     <div class="card text-center">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
     {{product.nombre}}
-    <button class="btn btn-danger">
+    
+    <button *ngIf="auth.isLoggedIn()" class="btn btn-danger" (click)="deleteProduct(product.id)">
+        
         <i class="fas fa-trash-alt"></i>
+    
     </button>
+
         </div>
         <div class="card-body">
-            <P>{{product.tipo}}</P>
-            <a href="" class="btn btn-info btn-block">EDIT PRODUCT</a>
+
+            <P>REFERENCIA: {{product.referencia}}</P>
+           
+            <P>TIPO: {{product.tipo}}</P>
+
+            <P>PRECIO: {{product.precio}}$</P>
+            
+            <a *ngIf="auth.isLoggedIn()" [routerLink]="['/edit',product.id]" class="btn btn-info btn-block">EDIT PRODUCT</a>
+
         </div>
     </div>
     </div>

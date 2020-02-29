@@ -9,7 +9,7 @@ module.exports = (app) =>
     //Operaciones
     app.post("/createProduct",productosController.createProduct);
     app.post("/updateProduct", productosController.updateProduct);
-    app.post("/deleteProduct", productosController.deleteProduct);
+    app.get("/deleteProduct/:id", productosController.deleteProduct);
     
     app.get("/getProductUser/:id_user", productosController.getProductsUser);
 

@@ -20,7 +20,7 @@ export class ProductosService {
     return this.http.get(`${this.API_URI}/getProductUser/${id}`);
   }
   deleteProduct(id:string){
-    return this.http.delete(`${this.API_URI}/deleteProduct/${id}`);
+    return this.http.get(`${this.API_URI}/deleteProduct/${id}`);
   }
   saveProduct(product:product){
     return this.http.post(`${this.API_URI}/createProduct`,product);
