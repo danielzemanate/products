@@ -1,0 +1,31 @@
+<div>
+    
+    <button *ngIf="auth.isLoggedIn()" class="btn btn-danger" routerLink="/addCategories">
+        
+        <i class="fas fa-plus-circle"> Agregar Categoria</i>
+    
+    </button>
+</div>
+
+
+
+<div class="col-md-4" style="margin-bottom: 12px;" *ngFor="let category of categories | filter:searchText">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+    {{category.nombre}}
+    
+    <button *ngIf="auth.isLoggedIn()" class="btn btn-danger" (click)="deleteProduct(categories.id)">
+        
+        <i class="fas fa-trash-alt"></i>
+    
+    </button>
+
+    </div >
+        <div class="card-body"> 
+
+            
+            <a *ngIf="auth.isLoggedIn()" [routerLink]="['/edit',categories.id]" class="btn btn-info btn-block">EDITAR PRODUCTO</a>
+
+        </div>
+    </div>
+</div>

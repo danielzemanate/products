@@ -17,6 +17,8 @@ import {ProductosService} from './services/productos.service';
 import { UpdateComponent } from './update/update.component'
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesFormComponent } from './categories-form/categories-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,7 +44,17 @@ const routes: Routes = [
     path: 'edit/:id',
     component: ProductsFormComponent,
     
-  }
+  },
+
+  {
+    path: 'categories',
+    component: CategoriesComponent, 
+  },
+  {
+    path: 'addCategories',
+    component: CategoriesFormComponent,
+    
+  },
 ]
 
 
@@ -55,7 +67,9 @@ const routes: Routes = [
     HomeComponent,
     ProductsFormComponent,
     ProductsListComponent,
-    UpdateComponent
+    UpdateComponent,
+    CategoriesComponent,
+    CategoriesFormComponent
   ],
   imports: [
     BrowserModule,
