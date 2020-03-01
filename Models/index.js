@@ -3,7 +3,7 @@ var db = {};
 
 
 db.producto = require('../Models/productos');
-db.administrador = require('../Models/administrador');
+
 db.users = require('../Models/Users');
 db.categoria=require('../Models/category');
 

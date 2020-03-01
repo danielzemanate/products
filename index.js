@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-const routesAdministrador = require("./Routes/administrador")(app);
+
 const routeProducto = require("./Routes/productos")(app);
 const routeUsers = require("./Routes/Users")(app);
 const routeLogin = require("./Routes/login")(app);
