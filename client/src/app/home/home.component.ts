@@ -9,7 +9,7 @@ import { AuthenticationService } from '../authentication.service'
 export class HomeComponent implements OnInit{
 
   @HostBinding('class') classes='row'
-  products:any=[];
+  products:any = [];
   
   constructor(private productosServices:ProductosService, public auth: AuthenticationService) { }
   ngOnInit(): void {
@@ -18,12 +18,22 @@ export class HomeComponent implements OnInit{
   getProducts(){
     let id = this.auth.getUserDetails()?.id;
     console.log("Id Usuario: ", id)
-    this.productosServices.getProductsUser(id).subscribe(
-      res=> {
-        this.products=res;
-      },
-      err=>console.error(err)
-    )
+    if(id){
+      this.productosServices.getProductsUser(id).subscribe(
+        res=> {
+          this.products=res;
+        },
+        err=>console.error(err)
+      )
+    }else{
+      this.productosServices.getProducts().subscribe(
+        res=> {
+          this.products=res;
+        },
+        err=>console.error(err)
+      )
+    }
+    
   }
   deleteProduct(id:string){
     console.log(id)
@@ -37,6 +47,5 @@ export class HomeComponent implements OnInit{
   }
   editProduct(id:string){
     console.log(id);
-
   }
 }

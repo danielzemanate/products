@@ -26,7 +26,7 @@ export class ProductsFormComponent implements OnInit {
   };
 
   edit:boolean= false;
-
+  categories:any = [];
 
   constructor(
     private productosService:ProductosService, 
@@ -35,19 +35,21 @@ export class ProductsFormComponent implements OnInit {
     public auth: AuthenticationService) { }
 
   ngOnInit(): void {
-   const params= this.activatedRoute.snapshot.params;
-   if(params.id){
-     this.productosService.getProduct(params.id)
-     .subscribe(
-       res=>{
-        console.log(res)
-        var response = res[0];
-        this.edit=true
-        this.product = response;
-       },
-       err=>console.error(err)
-     )
-   }
+    this.getCategories();
+
+    const params= this.activatedRoute.snapshot.params;
+    if(params.id){
+      this.productosService.getProduct(params.id)
+      .subscribe(
+        res=>{
+          console.log(res)
+          var response = res[0];
+          this.edit=true
+          this.product = response;
+        },
+        err=>console.error(err)
+      )
+    }
   }
 
   saveNewProduct(){
@@ -64,7 +66,6 @@ export class ProductsFormComponent implements OnInit {
     )
    // console.log(this.product)
   }
-
   updateProduct(){
     this.productosService.updateProduct(this.product.id,this.product)
     .subscribe(
@@ -77,4 +78,21 @@ export class ProductsFormComponent implements OnInit {
     console.log(this.product)
   }
 
+  getCategories(){
+    let id = this.auth.getUserDetails()?.id;
+    console.log("Id Usuario: ", id)
+    if(id){
+      this.productosService.getCategoriesUser(id).subscribe(
+        res=> {
+          console.log("Categorias: ", res);
+          this.categories=res;
+        },
+        err=>console.error(err)
+      )
+    }
+  }
+
+  selectCategory(event:any){
+    console.log("Holaaaa: ", event)
+  }
 }

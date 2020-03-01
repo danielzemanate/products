@@ -13,13 +13,12 @@
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">
         <a class="nav-link" href="#" routerLink="/register">Registrarse</a>
       </li>
-      <li class="nav-item active" *ngIf="auth.isLoggedIn()">
-        <a class="nav-link">AGREGAR PRODUCTO</a>
-        
-      </li>
+      <!-- <li class="nav-item active" *ngIf="auth.isLoggedIn()">
+        <a class="nav-link">AGREGAR PRODUCTO</a> 
+      </li> -->
       <button *ngIf="auth.isLoggedIn()" class="btn btn-danger" routerLink="/addProduct">
         
-        <i class="fas fa-plus-circle"></i>
+        <i class="fas fa-plus-circle"> Agregar producto</i>
     
     </button>
 
@@ -31,7 +30,7 @@
 
    
       <li class="nav-item active" *ngIf="auth.isLoggedIn()">
-        <a class="nav-link" href="#" routerLink="" (click)="auth.logout()">SALIR</a>
+        <a class="nav-link" href="#" routerLink="" (click)="logout()">SALIR</a>
       </li>
       <li *ngIf="auth.isLoggedIn()" class="nav-item">
         <a class="nav-link">{{ auth.getUserDetails()?.nombre }} {{ auth.getUserDetails()?.apellido }}</a>

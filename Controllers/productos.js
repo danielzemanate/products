@@ -32,9 +32,10 @@ module.exports = {
     updateProduct: async (req, res) => 
     {
         var data = req.body;
+        var id= req.params.id
 
         producto.update(data,{
-            where: {id: data.id}
+            where: {id: id}
         })
             .then(producto => res.send({
              status: 200,
@@ -58,7 +59,19 @@ module.exports = {
 
     //######################################
     
-    getProductsUser: async (req, res) => {
+    getListProductsUser: async (req, res) => {
+        console.log("Request: ", req.params)
+        var id= req.params.id;
+
+        producto.findAll({
+            where: {
+              id_user: id
+            }
+          })
+        .then( productos=> res.send(productos))
+        .catch(error => console.log(error));
+    },
+    getProductUser: async (req, res) => {
         console.log("Request: ", req.params)
         var id= req.params.id;
 
@@ -70,5 +83,6 @@ module.exports = {
         .then( productos=> res.send(productos))
         .catch(error => console.log(error));
     }
+
 }
 

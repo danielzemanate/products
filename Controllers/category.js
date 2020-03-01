@@ -58,7 +58,7 @@ module.exports = {
 
     //######################################
     
-    getCategoriesUser: async (req, res) => {
+    getListCategoriesUser: async (req, res) => {
         console.log("Request: ", req.params)
         var id_user = req.params.id_user;
 

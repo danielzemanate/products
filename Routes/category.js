@@ -11,6 +11,6 @@ module.exports = (app) =>
     app.post("/updateCategory", categoryController.updateCategory);
     app.post("/deleteCategory", categoryController.deleteCategory);
     
-    app.get("/getCategoriesUser/:id_user", categoryController.getCategoriesUser);
+    app.get("/getCategoriesUser/:id_user", categoryController.getListCategoriesUser);
 
 }

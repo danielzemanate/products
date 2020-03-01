@@ -15,9 +15,11 @@ export class ProductosService {
   getProducts(){
     return this.http.get(`${this.API_URI}/products`);
   }
-
-  getProductsUser(id:number){
+  getProduct(id:number){
     return this.http.get(`${this.API_URI}/getProductUser/${id}`);
+  }
+  getProductsUser(id:number){
+    return this.http.get(`${this.API_URI}/getListProductsUser/${id}`);
   }
   deleteProduct(id:string){
     return this.http.get(`${this.API_URI}/deleteProduct/${id}`);
@@ -29,5 +31,9 @@ export class ProductosService {
   updateProduct(id:string|number,updateProduct:Product) {
     return this.http.post(`${this.API_URI}/updateProduct/${id}`,updateProduct);
 
+  }
+
+  getCategoriesUser(id:number){
+    return this.http.get(`${this.API_URI}/getCategoriesUser/${id}`);
   }
 }
