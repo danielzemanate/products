@@ -27,6 +27,7 @@ export class ProductsFormComponent implements OnInit {
 
   edit:boolean= false;
   categories:any = [];
+  selectedCategory:any = null;
 
   constructor(
     private productosService:ProductosService, 
@@ -55,6 +56,8 @@ export class ProductsFormComponent implements OnInit {
   saveNewProduct(){
 
     this.product.id_user = this.auth.getUserDetails()?.id;
+    this.product.tipo = this.selectedCategory.nombre;
+    this.product.id_category = this.selectedCategory.id;
     this.productosService.saveProduct(this.product)
     .subscribe(
       res=>{
@@ -93,6 +96,9 @@ export class ProductsFormComponent implements OnInit {
   }
 
   selectCategory(event:any){
-    console.log("Holaaaa: ", event)
+    console.log("Event: ", event);
+    let position = event.srcElement.selectedIndex;
+    this.selectedCategory = this.categories[position];
+    console.log("Categoría Seleccionada: ", this.selectedCategory)
   }
 }
