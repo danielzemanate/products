@@ -8,8 +8,8 @@ module.exports = (app) =>
 
     //Operaciones
     app.post("/createCategory",categoryController.createCategory);
-    app.post("/updateCategory", categoryController.updateCategory);
-    app.post("/deleteCategory", categoryController.deleteCategory);
+    app.post("/updateCategory/:id", categoryController.updateCategory);
+    app.get("/deleteCategory/:id", categoryController.deleteCategory);
     
     app.get("/getCategoriesUser/:id_user", categoryController.getListCategoriesUser);
 

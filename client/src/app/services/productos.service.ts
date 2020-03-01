@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Product} from '../models/product';
+import {Category} from '../models/category'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -35,5 +36,18 @@ export class ProductosService {
 
   getCategoriesUser(id:number){
     return this.http.get(`${this.API_URI}/getCategoriesUser/${id}`);
+  }
+
+  saveCategory(category:Category){
+    return this.http.post(`${this.API_URI}/createCategory`,category);
+  }
+
+  deleteCategory(id:string){
+    return this.http.get(`${this.API_URI}/deleteCategory/${id}`);
+  }
+
+  updateCategory(id:string|number,updateCategory:Category) {
+    return this.http.post(`${this.API_URI}/updateCategory/${id}`,updateCategory);
+
   }
 }

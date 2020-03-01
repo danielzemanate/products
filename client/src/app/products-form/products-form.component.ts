@@ -54,9 +54,7 @@ export class ProductsFormComponent implements OnInit {
   }
 
   saveNewProduct(){
-
     //console.log(this.selectedCategory)
-
     this.product.id_user = this.auth.getUserDetails()?.id;
    this.product.tipo = this.selectedCategory.nombre;
    this.product.id_category = this.selectedCategory.id;

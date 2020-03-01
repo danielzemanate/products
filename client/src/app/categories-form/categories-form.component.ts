@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding  } from '@angular/core';
+import {ProductosService} from '../services/productos.service';
+import { AuthenticationService } from '../authentication.service'
+import{Router, ActivatedRoute} from '@angular/router'
+import {Category} from '../models/category'
 
 @Component({
   selector: 'app-categories-form',
@@ -6,10 +10,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-form.component.scss']
 })
 export class CategoriesFormComponent implements OnInit {
+  @HostBinding ('class') classes='row';
 
-  constructor() { }
+  category : Category={
+    id:0,
+    id_user: null,
+    nombre:'',
+ 
+  };
+
+  edit:boolean= false;
+  categories:any = [];
+  selectedCategory:any = null;
+  
+  constructor(
+    private productosService:ProductosService, 
+    private router: Router, 
+    private activatedRoute:ActivatedRoute,
+    public auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }
+saveNewCategory(){
+    //console.log(this.selectedCategory)
+    this.category.id_user = this.auth.getUserDetails()?.id;
+    this.productosService.saveCategory(this.category)
+    .subscribe(
+      res=>{
+        console.log(res)
+        this.router.navigate(['/categories']);
 
+      },
+      err=>console.error(err)
+    )
+    //console.log(this.product)
+  }
 }

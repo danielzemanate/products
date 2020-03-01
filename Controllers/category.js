@@ -32,9 +32,10 @@ module.exports = {
     updateCategory: async (req, res) => 
     {
         var data = req.body;
+        var id= req.params.id;
 
         categoria.update(data,{
-            where: {id: data.id}
+            where: {id: id}
         })
             .then(categoria => res.send({
              status: 200,
@@ -44,14 +45,14 @@ module.exports = {
     },
 
     deleteCategory: async (req, res) => {
-        var data = req.body;
+        var id = req.params.id;
 
         categoria.destroy({
-            where: { id: data.id }
+            where: { id: id }
         })
             .then(categoria => res.send({
                 status: 200,
-                id: data.id
+                id: id
                }))
             .catch(error => console.log(error));
     },

@@ -39,31 +39,12 @@ export class CategoriesComponent implements OnInit {
       )
     }
   }
- /*  getProducts(){
-    let id = this.auth.getUserDetails()?.id;
-    //console.log("Id Usuario: ", id)
-    if(id){
-      this.productosServices.getProductsUser(id).subscribe(
-        res=> {
-          this.products=res;
-        },
-        err=>console.error(err)
-      )
-    }else{
-      this.productosServices.getProducts().subscribe(
-        res=> {
-          this.products=res;
-        },
-        err=>console.error(err)
-      )
-    }
-    
-  } */
-  deleteProduct(id:string){
+
+  deleteCategory(id:string){
     console.log(id)
-    this.productosServices.deleteProduct(id).subscribe(
+    this.productosServices.deleteCategory(id).subscribe(
       res=>{
-       // this.getProducts();
+        this.getCategories();
         console.log(res)
       },
       err=>console.error(err)

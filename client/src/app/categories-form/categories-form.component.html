@@ -1,1 +1,15 @@
-<p>categories-form works!</p>
+<div class="col-md-4 offset-md-4">
+    <div class="card">
+    <div class="card-body">
+        <form action="">
+            <div class="form-group">
+                <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus [(ngModel)]="category.nombre" >
+            </div>
+            
+         <button class="btn btn-success btn-block" (click)="saveNewCategory()" >
+            Guardar
+         </button>
+        </form>
+    </div>
+</div>
+</div>
