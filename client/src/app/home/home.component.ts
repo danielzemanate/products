@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit{
 
   @HostBinding('class') classes='row'
   products:any = [];
+  searchText
   
   constructor(private productosServices:ProductosService, public auth: AuthenticationService) { }
   ngOnInit(): void {

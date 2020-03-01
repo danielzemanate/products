@@ -16,6 +16,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import {ProductosService} from './services/productos.service';
 import { UpdateComponent } from './update/update.component'
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -59,6 +61,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AuthenticationService, 
