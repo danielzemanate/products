@@ -1,4 +1,4 @@
-export interface product {
+export interface Product {
     id?:number;
     id_user?:number;
     id_category?:number;

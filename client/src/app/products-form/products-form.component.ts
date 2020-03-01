@@ -1,8 +1,9 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { product } from '../models/product';
+import { Product } from '../models/product';
 import{Router, ActivatedRoute} from '@angular/router'
 
 import {ProductosService} from '../services/productos.service';
+import { AuthenticationService } from '../authentication.service'
 
 
 @Component({
@@ -14,17 +15,24 @@ export class ProductsFormComponent implements OnInit {
 
   @HostBinding ('class') classes='row';
 
-  product : product={
+  product : Product={
     id:0,
-    id_category:0,
-    id_user:0,
-    referencia:0,
+    id_category: null,
+    id_user: null,
+    referencia: null,
     nombre:'',
     tipo:'',
-    precio:0
+    precio: null
+  };
 
-  }
-  constructor(private productosService:ProductosService, private router: Router, private activatedRoute:ActivatedRoute) { }
+  edit:boolean= false;
+
+
+  constructor(
+    private productosService:ProductosService, 
+    private router: Router, 
+    private activatedRoute:ActivatedRoute,
+    public auth: AuthenticationService) { }
 
   ngOnInit(): void {
    const params= this.activatedRoute.snapshot.params;
@@ -33,7 +41,9 @@ export class ProductsFormComponent implements OnInit {
      .subscribe(
        res=>{
         console.log(res)
-        //this.product =res
+        var response = res[0];
+        this.edit=true
+        this.product = response;
        },
        err=>console.error(err)
      )
@@ -41,6 +51,8 @@ export class ProductsFormComponent implements OnInit {
   }
 
   saveNewProduct(){
+
+    this.product.id_user = this.auth.getUserDetails()?.id;
     this.productosService.saveProduct(this.product)
     .subscribe(
       res=>{
@@ -51,6 +63,18 @@ export class ProductsFormComponent implements OnInit {
       err=>console.error(err)
     )
    // console.log(this.product)
+  }
+
+  updateProduct(){
+    this.productosService.updateProduct(this.product.id,this.product)
+    .subscribe(
+      res=>{
+        console.log(res)
+        this.router.navigate(['/']);
+      },
+      err=>console.error(err)
+    )
+    console.log(this.product)
   }
 
 }

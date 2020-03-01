@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit{
     this.getProducts();
   }
   getProducts(){
-    this.productosServices.getProducts().subscribe(
+    let id = this.auth.getUserDetails()?.id;
+    console.log("Id Usuario: ", id)
+    this.productosServices.getProductsUser(id).subscribe(
       res=> {
         this.products=res;
       },

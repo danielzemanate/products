@@ -19,6 +19,7 @@ export class LoginComponent {
   login() {
     this.auth.login(this.credentials).subscribe(
       () => {
+        //localStorage.setItem('user_id', )
         this.router.navigateByUrl('/')
       },
       err => {
