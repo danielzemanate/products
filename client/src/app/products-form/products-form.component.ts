@@ -43,7 +43,7 @@ export class ProductsFormComponent implements OnInit {
       this.productosService.getProduct(params.id)
       .subscribe(
         res=>{
-          console.log(res)
+          //console.log(res)
           var response = res[0];
           this.edit=true
           this.product = response;
@@ -55,9 +55,11 @@ export class ProductsFormComponent implements OnInit {
 
   saveNewProduct(){
 
+    //console.log(this.selectedCategory)
+
     this.product.id_user = this.auth.getUserDetails()?.id;
-    this.product.tipo = this.selectedCategory.nombre;
-    this.product.id_category = this.selectedCategory.id;
+   this.product.tipo = this.selectedCategory.nombre;
+   this.product.id_category = this.selectedCategory.id;
     this.productosService.saveProduct(this.product)
     .subscribe(
       res=>{
@@ -67,9 +69,12 @@ export class ProductsFormComponent implements OnInit {
       },
       err=>console.error(err)
     )
-   // console.log(this.product)
+    //console.log(this.product)
   }
   updateProduct(){
+    this.product.tipo = this.selectedCategory.nombre;
+   this.product.id_category = this.selectedCategory.id;
+    //console.log(this.selectedCategory)
     this.productosService.updateProduct(this.product.id,this.product)
     .subscribe(
       res=>{
@@ -78,7 +83,7 @@ export class ProductsFormComponent implements OnInit {
       },
       err=>console.error(err)
     )
-    console.log(this.product)
+    //console.log(this.product)
   }
 
   getCategories(){
@@ -89,6 +94,7 @@ export class ProductsFormComponent implements OnInit {
         res=> {
           console.log("Categorias: ", res);
           this.categories=res;
+          this.selectedCategory=this.categories[0]
         },
         err=>console.error(err)
       )
