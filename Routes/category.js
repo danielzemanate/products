@@ -10,7 +10,9 @@ module.exports = (app) =>
     app.post("/createCategory",categoryController.createCategory);
     app.post("/updateCategory/:id", categoryController.updateCategory);
     app.get("/deleteCategory/:id", categoryController.deleteCategory);
+
     
+    app.get("/getCategoryUser/:id", categoryController.getCategoryUser);
     app.get("/getCategoriesUser/:id_user", categoryController.getListCategoriesUser);
 
 }

@@ -6,7 +6,7 @@
                 <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus [(ngModel)]="category.nombre" >
             </div>
             
-         <button class="btn btn-success btn-block" (click)="saveNewCategory()" >
+         <button class="btn btn-success btn-block" (click)="edit? updateCategory() : saveNewCategory()" >
             Guardar
          </button>
         </form>

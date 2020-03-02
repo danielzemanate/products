@@ -50,7 +50,7 @@ export class CategoriesComponent implements OnInit {
       err=>console.error(err)
     )
   }
-  editProduct(id:string){
+  editCategory(id:string){
     console.log(id);
   }
 }

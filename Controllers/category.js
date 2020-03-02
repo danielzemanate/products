@@ -70,6 +70,19 @@ module.exports = {
           })
         .then( categorias=> res.send(categorias))
         .catch(error => console.log(error));
+    },
+
+    getCategoryUser: async (req, res) => {
+        console.log("Request: ", req.params)
+        var id= req.params.id;
+
+        categoria.findAll({
+            where: {
+              id: id
+            }
+          })
+        .then( categorias=> res.send(categorias))
+        .catch(error => console.log(error));
     }
 }
 

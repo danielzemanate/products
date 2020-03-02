@@ -50,4 +50,7 @@ export class ProductosService {
     return this.http.post(`${this.API_URI}/updateCategory/${id}`,updateCategory);
 
   }
+  getCategory(id:number){
+    return this.http.get(`${this.API_URI}/getCategoryUser/${id}`);
+  }
 }

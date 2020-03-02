@@ -14,7 +14,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { ProductsFormComponent } from './products-form/products-form.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import {ProductosService} from './services/productos.service';
-import { UpdateComponent } from './update/update.component'
+
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CategoriesComponent } from './categories/categories.component';
@@ -29,12 +29,7 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuardService]
   },
-  {
-    path: 'update',
-    component: UpdateComponent,
-    
-  },
-
+  
   {
     path: 'addProduct',
     component: ProductsFormComponent,
@@ -43,6 +38,12 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: ProductsFormComponent,
+    
+  },
+
+  {
+    path: 'editCategory/:id',
+    component: CategoriesFormComponent,
     
   },
 
@@ -67,7 +68,6 @@ const routes: Routes = [
     HomeComponent,
     ProductsFormComponent,
     ProductsListComponent,
-    UpdateComponent,
     CategoriesComponent,
     CategoriesFormComponent
   ],

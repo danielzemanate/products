@@ -30,7 +30,22 @@ export class CategoriesFormComponent implements OnInit {
     public auth: AuthenticationService) { }
 
   ngOnInit(): void {
+
+    const params= this.activatedRoute.snapshot.params;
+    if(params.id){
+      this.productosService.getCategory(params.id)
+      .subscribe(
+        res=>{
+          console.log(res)
+          var response = res[0];
+          this.edit=true
+          this.category = response;
+        },
+        err=>console.error(err)
+      )
+    }
   }
+  
 saveNewCategory(){
     //console.log(this.selectedCategory)
     this.category.id_user = this.auth.getUserDetails()?.id;
@@ -40,6 +55,19 @@ saveNewCategory(){
         console.log(res)
         this.router.navigate(['/categories']);
 
+      },
+      err=>console.error(err)
+    )
+    //console.log(this.product)
+  }
+
+  updateCategory(){
+    //console.log(this.selectedCategory)
+    this.productosService.updateCategory(this.category.id,this.category)
+    .subscribe(
+      res=>{
+        console.log(res)
+        this.router.navigate(['/categories']);
       },
       err=>console.error(err)
     )
