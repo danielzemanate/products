@@ -16,3 +16,7 @@ Ya dentro de la app observamos la interfaz principal donde se puede registrar, e
 las opciones dde administrador que son productos o categorias, cada uno con su respectivo crud, si se presiona en el titulo principal
 se observa la lista de productos registrados de acuerdo al usuario que ingreso, cuando se presiona el boton salir se desactivan todas
 las opciones de desarrollo y solo se muestra la lista de productos en cards sin ninguna opcion de hacer CRUD.
+
+El diagrama relacional de la base de datos tuvo algunos cambios en la base de datos creada mediante SEQUELIZE en el backend,para visualizar la aplicación de manera correcta se debe crear una base de datos llamda nodejs_login1, y en esta poner la tabla que enviare adjunto en el correo la tabla .sql.
+
+no tendría problmea alguno de ir a su lugar de trabajo, e indicar todo lo dicho anteriormente.
